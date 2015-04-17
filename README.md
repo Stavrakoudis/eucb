@@ -12,7 +12,8 @@ Maybe you need to edit the Makefile according to your system settings.
 
 ## Friends
 Some ideas and code has been inspired/taken from 
-(http://utopia.duth.gr/~glykos/Carma.html)[carma software package].
+[carma software package]
+(http://utopia.duth.gr/~glykos/Carma.html).
 
 Authors: 
 * Ioannis G. Tsoulos
