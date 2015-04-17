@@ -1,0 +1,1694 @@
+#LyX 1.5.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass article
+\language greek
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+EUCB Programming Manual
+\end_layout
+
+\begin_layout Author
+Ioannis G.
+ Tsoulos 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Athanassios Stavrakoudis
+\end_layout
+
+\begin_layout Date
+2008
+\end_layout
+
+\begin_layout Section
+Utility files
+\end_layout
+
+\begin_layout Subsection
+util.cc 
+\end_layout
+
+\begin_layout Standard
+This file has many functions that are used by many classes of the package.
+ The functions of this file are:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ getPAverage(DoubleVector &x,
+\series bold
+double
+\series default
+ p): This function returns the p-norm of the vector x.
+ This norm is defined as 
+\begin_inset Formula \[
+S(x,p)=\left(\frac{1}{N}\sum_{i=1}^{N}x_{i}^{-p}\right)^{-\frac{1}{p}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ getDotProduct(Point a,Point b): Return the dot product of the points a
+ and b.
+ A Point is defined a structure of three double precision elements (x,y
+ and z).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ getCrossProduct(Point a,Point b,Point &c): Set to x the cross product of
+ the points a and b.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ getPlaneNormal(Point p1,Point p2,Point p3,Point &n): Store to the point
+ n the normal vector to the plane defined by p1,p2 and p3.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ getInterSectionPoint(Point La,Point Lb,double A,double B,double C,double
+ D,Point &pt): Store to the point pt the intersection point of the vector
+ (La,Lb) and the plane defined by A,B,C and D.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ getAngleBetweenLines(Point La,Point Lb,Point Lc,Point Ld): Return the line
+ between the vectors (La,Lb) and (Lc,Ld).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ getDet(Point x1,Point y1,Point z1): Return the determinant of the matrix
+ defined as [x1,y1,z1].
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ getPointDistance(Point a,Point b): Return the euclidean distance of the
+ points a and b.
+\end_layout
+
+\begin_layout Enumerate
+string getNextWord(string s,
+\series bold
+int
+\series default
+ &index,
+\series bold
+char
+\series default
+ delimiter): Return the next word of the line s.
+ The word starts from the position index of s and end either at the end
+ of the string or at the first location of character delimiter.
+\end_layout
+
+\begin_layout Enumerate
+string getCommaElement(string s,
+\series bold
+int
+\series default
+ &index): Return the next delimited by comma word of the line s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ getCommaElements(string s,vector<string> &str): Return all the comma delimited
+ words of the string s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ psf_error(string s): Print the string s to the standard error output and
+ terminate the eucb program.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ psf_warning(string s): Print the string s to the standard error output
+ but do not terminate the program.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ getword(
+\series bold
+char
+\series default
+ *line,
+\series bold
+char
+\series default
+ *word,
+\series bold
+int
+\series default
+ &index): Return the next word of string line starting from position index.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ getAllWords(
+\series bold
+char
+\series default
+ *line, vector<string> &str): Return all the words from line and store them
+ to the vector str.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ ParseIntList(string str,vector<
+\series bold
+int
+\series default
+> &reslist): Parse the string str for integers delimited by :,- or comma.
+\end_layout
+
+\begin_layout Enumerate
+void getVectorStatistics(DoubleVector &x,
+\series bold
+ double
+\series default
+ &min,
+\series bold
+ double
+\series default
+ &max,
+\series bold
+ double
+\series default
+ &avg,
+\series bold
+ double
+\series default
+ &std): Return the minimum, the maximum, the average and the standard deviation
+ of the vector x.
+\end_layout
+
+\begin_layout Enumerate
+void getAngleVectorStatistics(DoubleVector &x,
+\series bold
+ double
+\series default
+ &min,
+\series bold
+ double
+\series default
+ &max,
+\series bold
+ double
+\series default
+ &avg,
+\series bold
+ double
+\series default
+ &std): Return the minimum, the maximum, the average and the standard deviation
+ of the angle vector x.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ getBelowPercent(DoubleVector &x,
+\series bold
+ double
+\series default
+ critical_value): Return the percent of points in x that fall below critical_val
+ue.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ getBelowCount(DoubleVector &x,
+\series bold
+ double
+\series default
+ critical_value): Return the number of points in x that fall below critical_valu
+e.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ makeHist(string filename, string histname, 
+\series bold
+double
+\series default
+ minvalue, 
+\series bold
+double
+\series default
+ maxvalue, 
+\series bold
+double
+\series default
+ delta): Store in file histname the histogram of filename.
+ The minimum value is minvalue, the maximum value maxvalue and the gap between
+ histo - values is delta.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ makeHist(DoubleVector x, vector<HistStruct> &st, 
+\series bold
+double
+\series default
+ minvalue, 
+\series bold
+double
+\series default
+ maxvalue, 
+\series bold
+double
+\series default
+ delta): Store in st the histogram of the vector x.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ PrintHist(string filename, vector<HistStruct> &st): Print in file filename
+ the histogram st.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ PrintAngleHist(string filename, vector<HistStruct> &st): Print in file
+ filename the angular histogram st.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ makeSmooth(IntVector &f, DoubleVector &x, IntVector &sf, DoubleVector &sx,
+ 
+\series bold
+int
+\series default
+ start, 
+\series bold
+int
+\series default
+ step): Make smooth data from f and x and store them to sf and sx correspondigly.
+ The argument start determines the frequency of samples.
+ If the user does not want overlapping samples the he must set step to -1.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ makeAngleSmooth(IntVector &f, DoubleVector &x, IntVector &sf, DoubleVector
+ &sx, 
+\series bold
+int
+\series default
+ start, 
+\series bold
+int
+\series default
+ step): Make smooth data from f and angular data x and store them to sf
+ and sx correspondigly.
+ The argument start determines the frequency of samples.
+ If the user does not want overlapping samples the he must set step to -1.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ torsion( 
+\series bold
+double
+\series default
+ x1, 
+\series bold
+double
+\series default
+ y1, 
+\series bold
+double
+\series default
+ z1, 
+\series bold
+double
+\series default
+ x2, 
+\series bold
+double
+\series default
+ y2, 
+\series bold
+double
+\series default
+ z2, 
+\series bold
+double
+\series default
+ x3, 
+\series bold
+double
+\series default
+ y3, 
+\series bold
+double
+\series default
+ z3, 
+\series bold
+double
+\series default
+ x4, 
+\series bold
+double
+\series default
+ y4, 
+\series bold
+double
+\series default
+ z4): Calculate and return the dihedral angle of the points (x1,y1,z1),
+ (x2,y2,z2), (x3,y3,z3) and (x4,y4,z4).
+\end_layout
+
+\begin_layout Enumerate
+string printNumber(
+\series bold
+int
+\series default
+ x): Return in string format the integer number x.
+\end_layout
+
+\begin_layout Enumerate
+string printNumber(
+\series bold
+int 
+\series default
+x,
+\series bold
+ int
+\series default
+ space): Return in string format the integer number x using space characters.
+\end_layout
+
+\begin_layout Enumerate
+string printNumber(
+\series bold
+double
+\series default
+ x): Return in string format the double precision number x.
+\end_layout
+
+\begin_layout Enumerate
+string printNumber(
+\series bold
+double
+\series default
+ x,
+\series bold
+int
+\series default
+ space,
+\series bold
+int
+\series default
+ decimal): Return in string format the double precision number x, using
+ space characters and decimal characters after the decimal point.
+\end_layout
+
+\begin_layout Enumerate
+string printPercent(
+\series bold
+double
+\series default
+ x): Return in string format the percent x, 
+\begin_inset Formula $x\in[0,1].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+string printString(string s,
+\series bold
+int
+\series default
+ tab): Return in string format the string s using at least tab characters.
+\end_layout
+
+\begin_layout Enumerate
+string printFrame(
+\series bold
+int
+\series default
+ f): Return in string format the frame f.
+\end_layout
+
+\begin_layout Enumerate
+string printDistance(
+\series bold
+double
+\series default
+ x): Return in string format the distance x.
+\end_layout
+
+\begin_layout Enumerate
+string printAngle(
+\series bold
+double
+\series default
+ a): Return in string format the angle a.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Print(string s): Print to the standard output the string s but do not insert
+ a new line.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ PrintLine(string s): Print to the standard output the string s and insert
+ a new line.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Print(FILE *fp,string s): Print the string s to the file pointed by fp
+ but do not insert a new line.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ PrintLine(FILE *fp,string s): Print the string s to the file pointed by
+ fp and insert a new line.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ PrintDistances(string filename, IntVector &frame, DoubleVector &distance):
+ Print the tables frame and distance to the file with name filename.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void 
+\series default
+PrintAngles(string filename, IntVector &frame, DoubleVector &angle): Print
+ the tables frame and angle to the file with name filename.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ PrintDistAndAngle(string filename, IntVector &frame, DoubleVector &distance,
+ DoubleVector &angle): Print the tables frame, distance and angle to the
+ file with name filename.
+\end_layout
+
+\begin_layout Subsection
+global.cc
+\end_layout
+
+\begin_layout Standard
+This file holds all the necessary global variables used by the functions
+ and the classes of the program.
+ 
+\end_layout
+
+\begin_layout Subsection
+psf.cc 
+\end_layout
+
+\begin_layout Standard
+This file holds all the information used to describe psf files as well some
+ some utility functions:
+\end_layout
+
+\begin_layout Enumerate
+atom: This is the main structure describing every atom of the psf files.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ parse_psf(
+\series bold
+char
+\series default
+ *psffile,vector<atom> &table): Parse the psffile and store the atoms to
+ table.
+ If the parsing was succesful the function returns 1.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ isConnected(vector<atom> &table, 
+\series bold
+int
+\series default
+ id1, 
+\series bold
+int 
+\series default
+id2): Return 1 if the atoms id1 and id2 are connected.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ countConnected(vector<atom> &table,
+\series bold
+int
+\series default
+ id): Return the number of atoms connected to atom id.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ enumerateChains(vector<string> &result): Return all the chains of the psf.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ isHydro(atom a): Return 1, if the atom a is an hydrogen atom.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ isBackbone(atom a): Return 1, if the atom a is a backbone atom (backbone4).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int 
+\series default
+isBackbone4(atom a): Return 1, if the atom a is a backbone4 atom.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ isBackbone3(atom a): Return 1, if the atom a is backbone3 atom.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ isSidechain(atom a): Return 1, if the atom a is sidechain atom.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ isWater(atom a): Return 1, if the atom a is a water atom (res_id = TIP3).
+\end_layout
+
+\begin_layout Subsection
+team.cc 
+\end_layout
+
+\begin_layout Standard
+The class Team declares the sequence lists of strings, used in most operations
+ to intensify the search.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+vector<TeamStruct> table: The elements of the sequence list.
+\end_layout
+
+\begin_layout Enumerate
+vector<string> res_list: The residue names in the sequence list.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+Team(char *file,char *str1,char *str2): Read and construct a list from file.
+\end_layout
+
+\begin_layout Enumerate
+Team(char *file,vector<string> list): Read and construct a list from file.
+\end_layout
+
+\begin_layout Enumerate
+Team(vector<string> list): Construct a sequence using the list.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Team(vector<string> arg1, vector<string> arg2): Construct a sequence using
+ the arguments arg1 and arg2.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setSeqString(vector<string> list): Chage the sequence string using the
+ argument list.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setResList(vector<string> &s): Change the residue names of the sequence.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ find(atom atom,string &chain): Return 1 if the atom is found in the sequence.
+ Also return in chain the chain_id of the founded atom.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ replace(vector<string> &s): Replace the sequence strings with the list
+ s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ print(): Print to the standard output the elements of the sequence.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ enumerateChains(vector<string> &result): Enumerate in result all the chains
+ of the sequence.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ enumerateResId(string s, vector<
+\series bold
+int
+\series default
+> &res): Enumerate in res all the residue numbers of the chain s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ enumerateAtoms(vector<atom> &list, vector<
+\series bold
+int
+\series default
+> &res): Enumerate in list res all the atoms of the sequence from tha atom
+ table atom.
+\end_layout
+
+\begin_layout Enumerate
+~Team(): The destructor of the class.
+\end_layout
+
+\begin_layout Subsection
+dcd.cc 
+\end_layout
+
+\begin_layout Standard
+The class Dcd reads the elements of a dcd file and it provided many search
+ functions in the dcd contentes, such as torsions, distances etc.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+pdb.cc 
+\end_layout
+
+\begin_layout Standard
+In this file the corresponding pdb is read and the position of the atoms
+ is stored to a table.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ readPdb(string filename): Read from filename the pdb contents.
+ If the file is not readable or the elements of the pdb are not exactly
+ the same as in psf file, then the function returns 0 otherwise the function
+ returns 1.
+\end_layout
+
+\begin_layout Enumerate
+PointVector pdbpos: Store in the array pdbpos the position of the atoms
+ that will be read.
+\end_layout
+
+\begin_layout Section
+Command classes
+\end_layout
+
+\begin_layout Subsection
+Command 
+\end_layout
+
+\begin_layout Standard
+This is the a base class describing each command to be implemented such
+ as torsions, distances etc.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+string name: The name of the command.
+ Each command must have an unique name.
+\end_layout
+
+\begin_layout Enumerate
+string logname: The name of the logfile, where the command will be printed
+ various information.
+ This is name is usually set to name+
+\begin_inset Quotes erd
+\end_inset
+
+.log
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+FILE *fplog: The file descriptor for the log file.
+\end_layout
+
+\begin_layout Enumerate
+Team *team: The default sequence used to enchance the search during the
+ running of the command.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+Command(string s): Open the log file and set the name of the command to
+ the argument s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setSearch(vector<string> &s): Change the sequence string to the argument
+ s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setFile(string s): Read the elements of sequence from the file s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setRes(vector<string> &s): Constraint the sequence team to the residue
+ list s.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setTeam(Team *t): Change the sequence string to the argument t.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+virtual void
+\series default
+ Run(): A virtual function implementing the command to be executed.
+\end_layout
+
+\begin_layout Enumerate
+string getName(): Return the name of the command.
+\end_layout
+
+\begin_layout Enumerate
+~Command(): The destructor of the class.
+ It deallocates the previously allocated memory and it closes the opened
+ files.
+\end_layout
+
+\begin_layout Subsection
+CommandAnal 
+\end_layout
+
+\begin_layout Standard
+This command displays information about the psf file.
+ The information is printed to the standard output.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Standard
+This comamnd has not any variable.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandAnal(): The default constructor of the method.
+\end_layout
+
+\begin_layout Enumerate
+void Run(): Run the command and display the necessary information about
+ the psf file.
+\end_layout
+
+\begin_layout Subsection
+CommandAngle 
+\end_layout
+
+\begin_layout Standard
+Implement the -tors command and write files with dihedral angles for the
+ residue in the given sequence list.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ phi_flag: 1, if the user wants the phi angles to be printed.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ psi_flag:1, if the user wants the psi angles to be printed.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ omega_flag: 1, if the user wants the omega angles to be printed.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int 
+\series default
+chi1_flag: 1, if the user wants the chi1 angles to be printed.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ JHNHA_a, JHNHA_b, JHNHA_c: parameters for the calculation of the JHNHA
+ statistic.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandAngle(): The default constructor of the class.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setAngleList(vector<string> &s): Set the angle types (phi, psi, etc.) that
+ we want to be printed.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setJHNHA(
+\series bold
+double
+\series default
+ a, 
+\series bold
+double
+\series default
+ b, 
+\series bold
+double
+\series default
+ c): Set the parameters for the JHNHA statistic.
+\end_layout
+
+\begin_layout Enumerate
+void Run(): Implement the command.
+\end_layout
+
+\begin_layout Subsection
+CommandAroch 
+\end_layout
+
+\begin_layout Standard
+This class is used to implement the aroch facility.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+vector<HeavySideChain> SideChain: The atoms that are will be used for the
+ stacking planes.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ stack_percent: The critical percent used in the command execution.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double 
+\series default
+stack_distance: The critical distance used in the command execution.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ stack_angle: The critical angle used in the command execution.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandAroch(
+\series bold
+double
+\series default
+ sp, 
+\series bold
+double 
+\series default
+sd, 
+\series bold
+double
+\series default
+ sa): Initialize the command and set the critical values.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Run(): Implement the command.
+\end_layout
+
+\begin_layout Subsection
+CommandAronh 
+\end_layout
+
+\begin_layout Standard
+This class is used to implement the aronh facility.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+vector<HeavySideChain> SideChain: The atoms that are will be used for the
+ stacking planes.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ stack_percent: The critical percent used in the command execution.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double 
+\series default
+stack_distance: The critical distance used in the command execution.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ stack_angle: The critical angle used in the command execution.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandAroch(
+\series bold
+double
+\series default
+ sp, 
+\series bold
+double 
+\series default
+sd, 
+\series bold
+double
+\series default
+ sa): Initialize the command and set the critical values.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Run(): Implement the command.
+\end_layout
+
+\begin_layout Subsection
+CommandAropos 
+\end_layout
+
+\begin_layout Standard
+This class is used to implement the aropos facility.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+vector<HeavySideChain> SideChain: The atoms that are will be used for the
+ stacking planes.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ stack_percent: The critical percent used in the command execution.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double 
+\series default
+stack_distance: The critical distance used in the command execution.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ stack_angle: The critical angle used in the command execution.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandAroch(
+\series bold
+double
+\series default
+ sp, 
+\series bold
+double 
+\series default
+sd, 
+\series bold
+double
+\series default
+ sa): Initialize the command and set the critical values.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Run(): Implement the command.
+\end_layout
+
+\begin_layout Subsection
+CommandBackbone 
+\end_layout
+
+\begin_layout Standard
+Calculate the hydrogen bonds.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Standard
+This command does not have any variable.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandBackbone(): The constructor of the class.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Run(): Implement the command.
+\end_layout
+
+\begin_layout Subsection
+CommandBturn 
+\end_layout
+
+\begin_layout Standard
+Calculate the beta turn statistics.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandComplexSalt 
+\end_layout
+
+\begin_layout Standard
+Calculate complex salt statistics.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandDistance 
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandDonor 
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommanNoe 
+\end_layout
+
+\begin_layout Standard
+Implement the noe facility.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+vector<string> noe_atom: It is a list specify the noe atoms.
+ Usually, these atom names are HA and HN.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+double
+\series default
+ average: This is a variable with default value 6.0 used in the statistic
+ of the noe command.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandNoe(): The default constructor of the class.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setAtoms(vector<string> &s): Set the atoms that will be used in the noe
+ command.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ setAverage(
+\series bold
+double
+\series default
+ d): Set the parameter average.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Run(): Implement the command.
+\end_layout
+
+\begin_layout Subsection
+CommandRdf 
+\end_layout
+
+\begin_layout Standard
+Calculate the rdf statistics.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandRmsd 
+\end_layout
+
+\begin_layout Standard
+Calculate the rmsd statistics.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ caflag: 1, if the user wants ca atoms in the rmsd.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ backbone4flag: 1, if the user wants backbone4 atoms in the rmsd.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ backbone3flag: 1, if the user wants backbone3 atoms in the rmsd.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+int
+\series default
+ sidechainflag: 1, if the user wants sidechain atoms in the rmsd.
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Enumerate
+CommandRmsd(vector<string> flags): Initialize the command and through flags
+ set the atoms that will be take part in the calculation of the rmsd.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+void
+\series default
+ Run(): Implement the command.
+\end_layout
+
+\begin_layout Subsection
+CommandRmsf 
+\end_layout
+
+\begin_layout Standard
+Calculate the rmsf statistics.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandSalt
+\end_layout
+
+\begin_layout Standard
+Implement the salt bridges facility.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandSidedist
+\end_layout
+
+\begin_layout Standard
+Implement the sidedist facility.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandStack
+\end_layout
+
+\begin_layout Standard
+Implement the stacking operation.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandUnary
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Subsection
+CommandWatBridge
+\end_layout
+
+\begin_layout Standard
+Implement the water bridge facility.
+\end_layout
+
+\begin_layout Subsubsection
+Variables 
+\end_layout
+
+\begin_layout Subsubsection
+Methods
+\end_layout
+
+\begin_layout Standard
+\begin_inset LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

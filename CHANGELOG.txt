@@ -1,0 +1,47 @@
+1/8/2010	- Version 1.0.0
+		First public release of the software.
+		Added the option -v, which provides 
+		version  control for the software.
+2/8/2010	
+		1.Added the option nofit in the -entropy 
+		command, which enables the calculation of
+		entropies without the rmsd fitting.
+		2.Added the options 0,pi in the 
+		-angle command. The option 0 prints the
+		angles in [0,360] range and the option
+		pi prints the angles in rad instead of
+		degrees.
+3/8/2010	1. The file rad.cc has been added to 
+		the distribution.
+		2. Added the command -sasa in the
+		distribution.
+		3. Minor corrections in the -tors 
+		command.
+11/8/2010	1. Minor corrections in the option pi
+		of the command -tors.
+		2. Added the computational time information
+		in the .log file.
+		3. The folder utis has been added to the
+		distribution.
+12/8/2010	1. Added the facility of smart in the command
+		-side1 ... -side2
+13/8/2010	1. Added the facility of smart in the command
+		-aroCH
+		2. Minor corrections in -aroCH command.
+		3. Added the facility of smart in the command
+		-aropos	
+25/8/2010	1. Added the option -disu for disulfide bonds.
+
+22/11/2010	1. Added the suboptin pairs in the -entropy command.
+
+23/07/2011	1. Commented the function printAcor in utils.cc
+		2. Corrected a  minor problem  in command_contact.cc 
+		3. Added the option -ref, which specifies a 
+			reference frame for commands such as rmsd.
+		4. Added hbonds.tex to the output files of the command
+			-hbonds.
+		5. Added the command -hbonds1 ... -hbonds2 ...
+08/08/2011	1. The command eucb -acceptor ... -donor ... produces
+		the log file ACCEPTOR.log and not DONOR.log as usual.
+10/08/2011	1. The files DONOR.log and ACCEPTOR.log contain the 
+		same information as HBONDS.log

@@ -1,0 +1,244 @@
+OPTION -help
+Print a help screen to the screen and terminate.
+ARGUMENTS: name, where name is the name of a particular command 
+that the user wants help.
+OPTION -group1
+Specify the first teamfile to be used for the -distance facility.
+ARGUMENTS: teamfile, where teamfile is the name of a file describing
+a valid teamfile. The parameter teamfile can have also the values
+aromatic, aliphatic, positive or negative.
+OPTION -group2
+Specify the second teamfile to be used for the -distance facility.
+ARGUMENTS: teamfile, where teamfile is the name of a file describing
+a valid teamfile. The parameter teamfile can have also the values
+aromatic, aliphatic, positive or negative.
+OPTION -psf
+Specify the psf file to be used. The user MUST provide this parameter.
+ARGUMENTS: filename, where filename is the name of the psf file.
+OPTION -dcd
+Specify the dcd file to be used. Teh user MUST provide this parameter.
+ARGUMENTS: filename, where filename is the name of the dcd file.
+OPTION -seq
+Set the sequence where the search will be applied. This option affects
+the last search enabled. 
+ARGUMENTS: seqlist, where seqlist is a comma separated list of 
+sequnces such as P:I1-I2 where P is a chain and I1, I2 residue numbers.
+OPTION -cutoff
+Set the critical search parameters.
+ARGUMENTS:  distance,percent,angle. The argument distance 
+specifies the critical distance (default 5.5)
+The argument percent specifies the critical percent (default 0.05) 
+and the argument angle the critical angle (default 120).
+OPTION -first
+Set the first frame of the dcd file that will be used. 
+ARGUMENTS: frame, where frame is a positive integer. 
+The default value is 1.
+OPTION -last
+Set the last frame of the dcd file that will be used. 
+ARGUMENTS: frame, where frame is a positive integer. 
+The default value is INT_MAX.
+OPTION -skip
+Set the frames of the dcd file to be skipped.
+ARGUMENTS: count, where count is a positive integer.
+The default value is no skip (1).
+OPTION -tors
+Enable the search for dihedral angles. The user MUST 
+provide a sequence to search using the -seq option.
+ARGUMENTS: angle_list, where angle_list is a comma
+separated list of phi, psi, omega, chi1 or the 
+wildcards all, sidechain, backbone.
+OPTION -hbonds
+Enable the search for hydrogen bonds. The user could
+provide a sequence to search using the -seq option.
+OPTION -smart
+Specify the parameters for smart search.
+ARGUMENTS: skip,distance where skip speficies the amount of 
+frames to be skipped and the argument distance the distance that 
+will be used in the comparisons.
+OPTION -donor
+Enable the search for donors if it is provided before acceptors
+and the search for acceptors otherwise.
+ARGUMENTS: don_list, where don_list is a comma separated list
+of the values backbone, sidechain, water, protein, all.
+OPTION -acceptor
+Enable the search for acceptors if it is provided before donors
+and the search for donors otherwise.
+ARGUMENTS: acc_list, where acc_list is a comma separated list
+of the values backbone, sidechain, water, protein, all.
+OPTION -rmsf
+Enable the rmsf printing.
+OPTION -res
+ARGUMENTS: aminoacid list.
+OPTION -bturn
+Enable the beta turn search facility. The user could provide
+a sequence to search using the -seq option.
+ARGUMENTS: percent,distance,angle.
+OPTION -distance
+ARGUMENTS:atom1-atom2.
+OPTION -angle
+ARGUMENTS:atom1-atom2-atom3.
+OPTION -dihedral
+ARGUMENTS:atom1-atom2-atom3-atom4.
+OPTION -stack
+Enable the search stacking facility. 
+ARGUMENTS: percent,distance,angle.
+OPTION -watbridge
+Enable the search for water bridges. The user could provide 
+a sequence to search using the -seq option.
+OPTION -psfanal
+Analyze the psf file displaying information about it. The 
+user can constrain the analysis providing a sequence 
+with the -seq option.
+OPTION -salt3
+Enable the complex salt search facility. The user should provide
+a sequnce to search using the -seq option.
+OPTION -salt2
+Enable the salt search facility. The user should provide
+a sequnce to search using the -seq option.
+OPTION -noe
+Enable the noe search facility. The user should provide a sequence
+using the -seq option. 
+OPTION -hist
+Enable or disable the histogram printing. This option affects all
+search options such as dihedrals, distances etc.
+ARGUMENTS: value, where value can be 1 (enable the histograms) or
+0 (disable the histograms).
+OPTION -side1
+Set the first side team for the side dist facility. 
+ARGUMENTS: string, where string can be aromatic, aliphatic, positive, negative.
+OPTION -side2
+Set the second side team for the side dist facility. 
+ARGUMENTS: string, where string can be aromatic, aliphatic, positive, negative.
+OPTION -bindist
+Set the value of bindistance.
+ARGUMENTS: value, where value is a double prevision value.
+OPTION -binangle
+Set the value of binangle.
+ARGUMENTS: value, where value is a double prevision value.
+OPTION -bindihe
+Set the value of bindihedral.
+ARGUMENTS: value, where value is a double prevision value.
+OPTION -aroHN
+Enable the aroHN facility.
+ARGUMENTS: percent,distance,angle.
+OPTION -aropos
+Enable the aropos facility.
+ARGUMENTS: percent,distance,angle.
+OPTION -avenoe
+Specify the NOE averaging factor.
+ARGUMENTS: distance
+OPTION -JHNHA
+Compute 3J HN-HA coupling constant (Karplus relation).
+ARGUMENTS: a,b,c.
+OPTION -aroHC
+Enable the aroHC facility.
+ARGUMENTS: percent,distance,angle.
+OPTION -pdb
+Specify the pdb file to be used for statistics.
+ARGUMENTS: the name of the pdb file.
+OPTION -rmsd
+Enable the rmsd search.
+ARGUMENTS:  none.
+OPTION -smooth
+Enable the smoothing printing of .sda files.
+ARGUMENTS: smooth_start, smooth_end
+OPTION -center1
+Enable the first centroid.
+ARGUMENTS: ca, backbone, backbone3, backbone4
+OPTION -center2
+Enable the second centroid.
+ARGUMENTS: ca, backbone, backbone3, backbone4
+OPTION -pdbwrite
+Write the dcd coordinates into pdb files.
+OPTION -pdbtors
+Enable the search for dihedral angles versus pdb angles. The user MUST 
+provide a sequence to search using the -seq option.
+ARGUMENTS: angle_list, where angle_list is a comma
+separated list of phi, psi, omega, chi1 or the 
+wildcards all, sidechain, backbone.
+OPTION -watbridge1
+Set the first watbridge sequence to search using a -seq command.
+OPTION -watbridge2 
+Set the second watbridge sequence to search  using a -seq command.
+OPTION -weight
+Enable the use of weights in centers and groups of distances and 
+torsions.
+OPTION -pdo
+Enable the pdo facility.
+ARGUMENTS: level, where level a greater than 0 integer value.
+OPTION -contact1 
+Specify the first contact group.
+ARGUMENTS: One of all,ca,backbone3,backbone4,backbone,sidechain
+OPTION -contact2 
+Specify the second contact group.
+ARGUMENTS: One of all,ca,backbone3,backbone4,backbone,sidechain
+OPTION -resdiff
+Specify the residue difference in search.
+ARGUMENTS: d, where d a positive number.
+OPTION -hydrosolve
+Find the hydro solve waters.
+ARGUMENTS: p,d,a 
+OPTION -resname
+Specify the residue names in the seq strings.
+ARGUMENTS: res1,res2,...
+OPTION -atomname
+Specify the atom names in the seq strings.
+ARGUMENTS: atom1,atom2,...
+OPTION -atomtype
+Specify the atom types in the seq strings.
+ARGUMENTS: type1,type2,...
+OPTION -hpc
+Search for the closest waters in a series of aminoacids.
+OPTION -iwcn
+ARGUMENTS: distance
+Implements the iwcn search facility.
+OPTION -cor
+ARGUMENTS: astep
+Sets the parameters for the correlation matrix.
+OPTION -block
+ARGUMENTS: statcount
+Specify the number of frames for statistics printing.
+OPTION -mol
+ARGUMENTS: molecule name
+Specify the molecule that will be used.
+OPTION -ahelix
+ARGUMENTS: ahelix percent
+Enable the helix search.
+OPTION -watpdb
+Enable the pdb printing with waters.
+ARGUMENTS: distance
+OPTION -clusterrmsd
+Enable the cluster rmsd search.
+ARGUMENTS: a double precision number as the limit for the clusters.
+OPTION -entropy
+Enable the entropy search facility.
+ARGUMENTS: number of frames to print entropy,temperature.
+OPTION -dcdwrite
+Enable the writing slices of the original dcd to files.
+ARGUMENTS: The name of the dcd file to print.
+OPTION -par
+Set the parameter file.
+ARGUMENTS: The name of the parameter file.
+OPTION -energy
+Print energy values using the parameter file specified with the -par option.
+ARGUMENTS: s, where s could be total, bond, angle, dihed,imprp,elect,vdw.
+OPTION -elect
+ARGUMENTS: e, float number.
+Specify the dielectric constant (default 1.0).
+OPTION -v
+Print version information.
+OPTION -sasa
+ARGUMENTS: p, double precision number.
+Enables the sasa search facility.
+OPTION -disu
+ARGUMENTS: none
+Enables the search for disulfides connections.
+OPTION -ref
+ARGUMENTS: ref frame (integer).
+Sets the reference frame.
+OPTION -hbonds1 
+ARGUMENTS: none
+Enables the hbond facility.
+OPTION -hbonds2
+ARGUMENTS: none
+Enables the hbond  facility.
