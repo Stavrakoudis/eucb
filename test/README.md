@@ -15,3 +15,5 @@ More details about the simulation and results at:
 * http://dx.doi.org/10.1007/s00894-008-0412-y
 * http://stavrakoudis.econ.uoi.gr/stavrakoudis/papers/Stavrakoudis_2009_JMolMod.pdf
 
+## Examples
+* rms.sh, simple calculations of RMSF and RMSD
