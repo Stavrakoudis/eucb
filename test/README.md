@@ -16,4 +16,7 @@ More details about the simulation and results at:
 * http://stavrakoudis.econ.uoi.gr/stavrakoudis/papers/Stavrakoudis_2009_JMolMod.pdf
 
 ## Examples
+* clean.sh, remove files from previous runs
 * rms.sh, simple calculations of RMSF and RMSD
+* tors.sh, calculation of torsion angles
+* salt2.sh, calculation of salt bridges between charged groups
